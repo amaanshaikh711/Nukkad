@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "conalyz": {
+      "source": "conalyz/conalyz_cli",
+      "sourceType": "github",
+      "skillPath": "conalyz/SKILL.md",
+      "computedHash": "812327c80bfa847f26aaec5bb93a80b219959dd82b9e95706bf24e136797251c"
+    }
+  }
+}
