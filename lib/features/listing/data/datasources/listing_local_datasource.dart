@@ -334,8 +334,7 @@ class HiveListingLocalDatasource implements ListingLocalDatasource {
           category: AppConstants.categoryLend,
           price: 'Free Lend / Share',
           originalPrice: 'Rental Value: ₹500/day',
-          imageUrl:
-              'https://images.unsplash.com/photo-1592417817098-8f3d6eb231fc?w=800&auto=format&fit=crop&q=80',
+          imageUrl: 'assets/images/lawn_mower.png',
           approximateArea: 'Green Park Blocks A-D',
           contactPreference: AppConstants.contactPrefCall,
           status: AppConstants.statusActive,
@@ -507,6 +506,18 @@ class HiveListingLocalDatasource implements ListingLocalDatasource {
           await box.put(item.id, item.toMap());
         } else {
           _inMemoryStore[item.id] = item.toMap();
+        }
+      }
+    } else {
+      // Ensure lend-1 image URL is refreshed in existing box storage
+      if (box != null) {
+        final lend1 = box.get('lend-1');
+        if (lend1 is Map) {
+          final map = Map<String, dynamic>.from(lend1);
+          if (map['imageUrl'] != 'assets/images/lawn_mower.png') {
+            map['imageUrl'] = 'assets/images/lawn_mower.png';
+            await box.put('lend-1', map);
+          }
         }
       }
     }

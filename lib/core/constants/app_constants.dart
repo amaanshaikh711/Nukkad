@@ -5,7 +5,7 @@ class AppConstants {
   AppConstants._();
 
   static const String appName = 'Nukkad';
-  static const String appTagline = 'Buy, Sell, Lend & Help — Right Around You.';
+  static const String appTagline = 'Buy, Sell, Lend & Help';
 
   // Storage Keys
   static const String listingsBoxName = 'nukkad_listings_box';

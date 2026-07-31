@@ -281,6 +281,15 @@ class ListingCard extends StatelessWidget {
 
   Widget _buildProductBannerImage(Color categoryColor, IconData categoryIcon) {
     if (listing.imageUrl.isNotEmpty) {
+      if (listing.imageUrl.startsWith('assets/')) {
+        return Image.asset(
+          listing.imageUrl,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return _buildStyledProductGraphic(categoryColor, categoryIcon);
+          },
+        );
+      }
       return Image.network(
         listing.imageUrl,
         fit: BoxFit.cover,

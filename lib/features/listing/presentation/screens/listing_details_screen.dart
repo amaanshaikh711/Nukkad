@@ -911,6 +911,14 @@ class ListingDetailsScreen extends ConsumerWidget {
   Widget _buildHeaderImage(
       String title, String imageUrl, Color color, IconData icon) {
     if (imageUrl.isNotEmpty) {
+      if (imageUrl.startsWith('assets/')) {
+        return Image.asset(
+          imageUrl,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) =>
+              _buildFallbackHeader(title, color, icon),
+        );
+      }
       return Image.network(
         imageUrl,
         fit: BoxFit.cover,
