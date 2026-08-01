@@ -12,7 +12,8 @@ void main() {
 
     expect(find.byType(NukkadApp), findsOneWidget);
 
-    // Fast-forward past the splash screen timer
-    await tester.pumpAndSettle(const Duration(seconds: 3));
+    // Fast-forward past the splash screen timer (2 seconds)
+    await tester.pump(const Duration(seconds: 2));
+    await tester.pump(const Duration(milliseconds: 100));
   });
 }

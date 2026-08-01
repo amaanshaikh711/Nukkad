@@ -46,44 +46,30 @@ class _HomeFeedScreenState extends ConsumerState<HomeFeedScreen> {
               height: 42,
               margin: const EdgeInsets.only(right: 12),
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [
-                    Color(0xFF059669), // Emerald Green
-                    Color(0xFF0D9488), // Teal Accent
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFF059669).withOpacity(0.3),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
+                    color: const Color(0xFF059669).withOpacity(0.25),
+                    blurRadius: 8,
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                    top: 3,
-                    right: 4,
-                    child: Container(
-                      width: 6,
-                      height: 6,
-                      decoration: const BoxDecoration(
-                        color: Colors.white70,
-                        shape: BoxShape.circle,
-                      ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  'assets/images/app_logo.png',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Image.network(
+                    'assets/images/app_logo.png',
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => Container(
+                      padding: const EdgeInsets.all(8),
+                      color: theme.colorScheme.primary,
+                      child: const Icon(Icons.storefront_rounded, color: Colors.white, size: 22),
                     ),
                   ),
-                  const Icon(
-                    Icons.storefront_rounded,
-                    color: Colors.white,
-                    size: 22,
-                  ),
-                ],
+                ),
               ),
             ),
 

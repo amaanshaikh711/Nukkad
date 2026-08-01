@@ -28,10 +28,10 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     _controller.forward();
 
-    // Navigate to Home Feed after short delay
+    // Navigate to All Marketplace Feed after short delay
     Future.delayed(const Duration(seconds: 2), () {
       if (mounted) {
-        context.go('/home');
+        context.go('/all');
       }
     });
   }
@@ -66,22 +66,37 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
               children: [
                 // App Logo Icon
                 Container(
-                  padding: const EdgeInsets.all(24),
+                  width: 120,
+                  height: 120,
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.primary,
-                    shape: BoxShape.circle,
+                    borderRadius: BorderRadius.circular(28),
                     boxShadow: [
                       BoxShadow(
-                        color: theme.colorScheme.primary.withOpacity(0.4),
-                        blurRadius: 20,
-                        spreadRadius: 4,
+                        color: theme.colorScheme.primary.withOpacity(0.35),
+                        blurRadius: 24,
+                        offset: const Offset(0, 8),
                       ),
                     ],
                   ),
-                  child: const Icon(
-                    Icons.storefront_rounded,
-                    size: 64,
-                    color: Colors.white,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(28),
+                    child: Image.asset(
+                      'assets/images/app_logo.png',
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Image.network(
+                        'assets/images/app_logo.png',
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          padding: const EdgeInsets.all(24),
+                          color: theme.colorScheme.primary,
+                          child: const Icon(
+                            Icons.storefront_rounded,
+                            size: 64,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
 
